@@ -1,0 +1,180 @@
+@use '../../sass/mixins/mixins';
+
+:host {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  @include mixins.component-translate-x-transition;
+  z-index: 9999;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: hsl( var(--clr-800) );
+
+  &__sidebar-toggle {
+    @include mixins.component-button-secondary;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: var(--topbar-height);
+    aspect-ratio: 1;
+
+    border: 0;
+
+    & > img {
+      scale: 0.75;
+    }
+  }
+
+  &__logo {
+    display: none;
+  }
+
+  &__divider {
+    display: none;
+  }
+
+  &__current {
+    flex-grow: 1;
+
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    font-size: 16px;
+
+    &-icon {
+      padding: 0.5rem;
+    }
+
+    &-title {
+      flex-grow: 1;
+      max-width: 400px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-block: 0;
+
+      & > span {
+        display: none;
+        font-size: var(--fs-200);
+        color: hsl( var(--clr-500) );
+      }
+
+      & > input {
+        font-size: var(--fs-400);
+        color: hsl( var(--clr-100) );
+        font-family: var(--ff-sans-normal);
+        font-weight: var(--fw-regular);
+
+        padding-inline: 0;
+        background-color: transparent;
+        border: 0;
+        border-bottom: 1px solid transparent;
+
+        &:hover,
+        &:focus-visible {
+          border-color: white;
+          outline: 0;
+        }
+      }
+    }
+  }
+
+  &__options {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-right: 0.5rem;
+    margin-left: auto;
+
+    &-delete {
+      @include mixins.component-svg-button;
+
+      display: inline-flex;
+      align-items: center;
+    }
+
+    &-save {
+      @include mixins.component-button;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem;
+
+      & > span {
+        display: none;
+      }
+    }
+  }
+}
+
+.delete-dialog {
+  @include mixins.component-dialog;
+  max-width: 21.5rem;
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  &__heading {
+    @include mixins.typography-ff-serif;
+    @include mixins.typography-fs-600;
+    @include mixins.typography-fw-bold;
+    margin-block: 0;
+  }
+
+  &__button {
+    @include mixins.component-button;
+    padding-block: 0.75rem;
+  }
+}
+
+@media (width >= 600px) {
+  .topbar {
+    &__sidebar-toggle {
+      & > img {
+        scale: 1;
+      }
+    }
+
+    &__current-title > span {
+      display: inline;
+    }
+
+    &__options {
+      margin-right: 0.75rem;
+
+      &-save > span {
+        display: inline;
+      }
+    }
+  }
+}
+
+@media (width >= 992px) {
+  .topbar {
+    &__logo {
+      display: block;
+    }
+
+    &__divider {
+      display: block;
+      height: 2.5rem;
+      margin-inline: 0;
+      border: 0;
+      border: 1px solid hsl( var(--clr-600) );
+    }
+  }
+}
