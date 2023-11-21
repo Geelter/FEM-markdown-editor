@@ -1,0 +1,69 @@
+@use '../../sass/mixins/mixins';
+
+:host {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.toggle {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.slider {
+  position: relative;
+  width: var(--theme-toggle-width);
+  height: var(--theme-toggle-height);
+  appearance: none;
+  border-radius: 100rem;
+  cursor: pointer;
+  background: var(--theme-toggle-background);
+
+  &::before {
+    @include mixins.component-theme-change-transition;
+
+    position: absolute;
+    display: block;
+
+    --_before-width: calc(var(--theme-toggle-width) / 4);
+    --_before-inset: calc((var(--theme-toggle-height) - var(--_before-width)) / 2);
+
+    content: "";
+    top: var(--_before-inset);
+    left: var(--_before-inset);
+    width: var(--_before-width);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background-color: var(--theme-toggle-slider);
+  }
+
+  &:checked::before {
+    transform: translateX(calc(var(--theme-toggle-width) / 2));
+  }
+}
+
+.theme-reset {
+  @include mixins.component-button-text;
+  border: 0;
+  background-color: transparent;
+
+  &:hover {
+    color: var(--con-button);;
+  }
+}
+
+.theme-reset--inactive {
+  visibility: hidden;
+}
+
+.icon {
+  fill: var(--theme-toggle-icon);
+}
+
+.icon--active {
+  fill: var(--theme-toggle-icon-active);
+}
