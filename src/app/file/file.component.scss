@@ -1,0 +1,41 @@
+@use '../../sass/mixins/mixins';
+
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.25rem;
+  cursor: pointer;
+
+  &:hover {
+    .file-name {
+      color: hsl( var(--clr-orange) );
+    }
+  }
+}
+
+.file-metadata {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+}
+
+.file-timestamp {
+  @include mixins.typography-ff-sans-normal;
+  @include mixins.typography-fs-200;
+  @include mixins.typography-fw-light;
+
+  margin: 0;
+  color: hsl( var(--clr-500) );
+}
+
+.file-name {
+  @include mixins.typography-ff-sans-normal;
+  @include mixins.typography-fs-400;
+  @include mixins.typography-fw-regular;
+
+  margin: 0;
+  color: hsl( var(--clr-100) );
+}

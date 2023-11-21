@@ -1,0 +1,11 @@
+<ng-container *ngIf="fileMetadata">
+  <img
+    class="topbar__current-icon"
+    src="./assets/icon-document.svg"
+    alt=""
+  />
+  <div class="file-metadata">
+    <span class="file-timestamp">{{fileMetadata.createdAt | date}}</span>
+    <h2 class="file-name">{{fileMetadata.name}}</h2>
+  </div>
+</ng-container>
