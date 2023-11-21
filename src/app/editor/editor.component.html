@@ -1,0 +1,4 @@
+<textarea id="editor"
+          [ngModel]="(currentFileContent$ | async)?.content ?? ''"
+          (ngModelChange)="onInputChange($event)"
+></textarea>
