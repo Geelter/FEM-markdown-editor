@@ -1,0 +1,103 @@
+@use '../../sass/mixins/mixins';
+
+:host {
+  /* theme toggle variables */
+  --theme-toggle-duration: 300ms;
+  --theme-toggle-width: 3rem;
+  --theme-toggle-height: calc(var(--theme-toggle-width) / 2);
+
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  width: var(--sidebar-width);
+
+  padding: 1.5rem;
+  background-color: hsl( var(--clr-900) );
+  transform: translateX(-100%);
+  @include mixins.component-translate-x-transition;
+  z-index: 9999;
+}
+
+.heading {
+  @include mixins.typography-ff-sans-normal;
+  @include mixins.typography-fs-300;
+  @include mixins.typography-letter-spacing-1;
+  @include mixins.typography-uppercase;
+
+  margin-block: 0;
+  color: hsl( var(--clr-500) );
+}
+
+.create-button {
+  --flow-space: 2rem;
+
+  @include mixins.component-button;
+
+  padding-block: 0.75rem;
+  width: 100%;
+}
+
+.file-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 1rem;
+
+  flex-grow: 1;
+  overflow-y: auto;
+  scrollbar-gutter: stable both-edges;
+}
+
+//.theme-toggle {
+//  display: flex;
+//  justify-content: flex-start;
+//  align-items: center;
+//  gap: 0.75rem;
+//
+//  &__slider {
+//    position: relative;
+//    width: var(--theme-toggle-width);
+//    height: var(--theme-toggle-height);
+//    appearance: none;
+//    border-radius: 100rem;
+//    cursor: pointer;
+//    background: var(--theme-toggle-background);
+//
+//    &::before {
+//      @include mixins.component-theme-change-transition;
+//
+//      position: absolute;
+//      display: block;
+//
+//      --_before-width: calc(var(--theme-toggle-width) / 4);
+//      --_before-inset: calc((var(--theme-toggle-height) - var(--_before-width)) / 2);
+//
+//      content: "";
+//      top: var(--_before-inset);
+//      left: var(--_before-inset);
+//      width: var(--_before-width);
+//      aspect-ratio: 1;
+//      border-radius: 50%;
+//      background-color: var(--theme-toggle-slider);
+//    }
+//
+//    &:checked::before {
+//      transform: translateX(calc(var(--theme-toggle-width) / 2));
+//    }
+//  }
+//}
+
+.sidebar--moved {
+  transform: translateX(0);
+}
+
+@media (hover: hover) {
+  .file-list {
+    @include mixins.component-scrollbar;
+    scrollbar-gutter: stable;
+  }
+}

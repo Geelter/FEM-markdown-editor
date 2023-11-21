@@ -1,0 +1,10 @@
+<h2 class="heading">My Documents</h2>
+<button class="create-button" (click)="createNewDocument()">+ New Document</button>
+<div class="file-list">
+  <app-file *ngFor="let file of fileMetadata$ | async"
+            [fileMetadata]="file"
+            (click)="chooseFile(file.id)"
+  ></app-file>
+</div>
+
+<app-theme-toggle></app-theme-toggle>
