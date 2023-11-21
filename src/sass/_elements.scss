@@ -1,0 +1,101 @@
+@use "./mixins/typography";
+
+h1, h2, h3, h4, h5, h6 {
+  @include typography.ff-serif;
+  color: var(--con-text-primary);
+  line-height: normal;
+}
+
+h1 {
+  @include typography.fs-900;
+}
+
+h2 {
+  @include typography.fs-800;
+  @include typography.fw-light;
+}
+
+h3 {
+  @include typography.fs-700;
+}
+
+h4 {
+  @include typography.fs-600;
+}
+
+h5 {
+  @include typography.fs-500;
+}
+
+h6 {
+  @include typography.fs-300;
+  color: hsl( var(--clr-orange) );
+}
+
+p, li {
+  @include typography.ff-serif;
+  @include typography.fs-300;
+  @include typography.fw-light;
+  color: var(--con-text-secondary);
+
+  // &::marker {
+  //     color: hsl( var(--clr-orange) );
+  // }
+}
+
+ul > li::marker {
+  color: hsl( var(--clr-orange) );
+  width: 3px;
+  aspect-ratio: 1;
+}
+
+blockquote {
+  position: relative;
+  padding: 1.5rem;
+  border-radius: 0.25rem;
+  background-color: var(--con-background-secondary);
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0.25rem;
+    background-color: hsl( var(--clr-orange) );
+  }
+
+  & > p {
+    @include typography.fs-300;
+    @include typography.fw-bold;
+    color: var(--con-text-primary);
+
+  }
+}
+
+
+pre {
+  padding: 1.5rem;
+  border-radius: 0.25rem;
+  background-color: var(--con-background-secondary);
+
+  & > code {
+    @include typography.ff-mono;
+    @include typography.fs-300;
+    @include typography.fw-regular;
+    color: var(--con-text-primary);
+    line-height: 1.5rem;
+
+    // word-break: keep-all;
+    overflow-wrap: break-word;
+
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+}
+
+textarea:focus-visible {
+  outline: none;
+}
