@@ -1,0 +1,68 @@
+:root,
+:root[data-force-color-mode="light"],
+::backdrop {
+  /* colors */
+  --clr-100:          0   0% 100%;
+  --clr-200:          0   0% 96%;
+  --clr-300:          0   0% 89%;
+  --clr-400:          222 9% 78%;
+  --clr-500:          213 4% 51%;
+  --clr-600:          216 8% 38%;
+  --clr-700:          216 9% 23%;
+  --clr-800:          220 7% 18%;
+  --clr-900:          216 8% 12%;
+  --clr-1000:         225 9% 9%;
+  --clr-orange:       13 75% 58%;
+  --clr-orange-hover: 21 86% 67%;
+
+  color-scheme: light dark;
+  /* Light Theme */
+  --con-background: hsl( var(--clr-100) );
+  --con-background-secondary: hsl( var(--clr-200) );
+  --con-divider-background: hsl( var(--clr-300) );
+  --con-section-label-background: hsl( var(--clr-200) );
+  --con-section-label-icon: hsl( var(--clr-500) );
+  --con-markdown-text: hsl( var(--clr-700) );
+  --con-text-primary: hsl( var(--clr-700) );
+  --con-text-secondary: hsl( var(--clr-500) );
+  --con-button: hsl( var(--clr-orange) );
+  --con-button-hover: hsl( var(--clr-orange-hover) );
+  --con-dialog-overlay: hsl( var(--clr-1000) / 0.5 );
+  --con-dialog-background: hsl( var(--clr-100) );
+  --theme-toggle-background: hsl( var(--clr-500) );
+  --theme-toggle-slider: hsl( var(--clr-100) );
+  --theme-toggle-icon: hsl( var(--clr-600) );
+  --theme-toggle-icon-active: hsl( var(--clr-100) );
+}
+
+@media (prefers-color-scheme: dark) {
+  :root,
+  ::backdrop {
+    /* Dark Theme */
+    --con-background: hsl( var(--clr-1000) );
+    --con-background-secondary: hsl( var(--clr-800) );
+    --con-divider-background: hsl( var(--clr-600) );
+    --con-section-label-background: hsl( var(--clr-900) );
+    --con-section-label-icon: hsl( var(--clr-400) );
+    --con-markdown-text: hsl( var(--clr-400) );
+    --con-text-primary: hsl( var(--clr-100) );
+    --con-text-secondary: hsl( var(--clr-400) );
+    --con-dialog-overlay: hsl( var(--clr-500) / 0.5 );
+    --con-dialog-background: hsl( var(--clr-900) );
+  }
+}
+
+:root[data-force-color-mode="dark"],
+::backdrop {
+  /* Dark Theme */
+  --con-background: hsl( var(--clr-1000) );
+  --con-background-secondary: hsl( var(--clr-800) );
+  --con-divider-background: hsl( var(--clr-600) );
+  --con-section-label-background: hsl( var(--clr-900) );
+  --con-section-label-icon: hsl( var(--clr-400) );
+  --con-markdown-text: hsl( var(--clr-400) );
+  --con-text-primary: hsl( var(--clr-100) );
+  --con-text-secondary: hsl( var(--clr-400) );
+  --con-dialog-overlay: hsl( var(--clr-500) / 0.5 );
+  --con-dialog-background: hsl( var(--clr-900) );
+}
