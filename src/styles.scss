@@ -2,6 +2,38 @@
 @import './sass/elements.scss';
 @import './sass/theme';
 
+:root {
+  --sidebar-width: 15.625rem;
+  --topbar-height: 3.5rem;
+  --section-divider-color: transparent;
+
+  /* content grid areas */
+  --markdown-header-area: 1 / 1 / 2 / -1;
+  --output-header-area: 1 / 1 / 2 / -1;
+
+  --markdown-area: 1 / 1 / -1 / -1;
+  --output-area: 1 / 1 / -1 / -1;
+
+  --fullsize-area: 1 / 1 / -1 / -1;
+
+  --markdown-z-index: 30;
+  --output-z-index: 20;
+  --fullsize-z-index: 40;
+}
+
+@media (width >= 600px) {
+  :root {
+    --topbar-height: 4.5rem;
+    --section-divider-color: var(--con-divider-background);
+
+    --markdown-header-area: 1 / 1 / 2 / 2;
+    --output-header-area: 1 / 2 / 2 / -1;
+
+    --markdown-area: 1 / 1 / -1 / 2;
+    --output-area: 1 / 2 / -1 / -1;
+  }
+}
+
 /* ------------------- */
 /*        Reset        */
 /* ------------------- */

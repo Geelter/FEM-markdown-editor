@@ -1,0 +1,119 @@
+@use '../sass/mixins/mixins';
+
+:host {
+  display: block;
+  height: 100vh;
+}
+
+.content {
+  @include mixins.component-translate-x-transition;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+  grid-template-rows: auto 1fr;
+  height: 100%;
+  padding-top: var(--topbar-height);
+
+  &__sections {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-row: 2 / -1;
+    grid-template-columns: subgrid;
+    grid-template-rows: 1fr;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    @media (hover: hover) {
+      @include mixins.component-scrollbar;
+    }
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 0.0625rem;
+    transform: translateX(-0.0625rem);
+    background-color: var(--section-divider-color);
+    z-index: 999;
+  }
+}
+
+.sidebar--moved {
+  transform: translateX(0);
+}
+
+.content--moved {
+  transform: translateX(var(--sidebar-width));
+}
+
+.editor {
+  grid-area: var(--markdown-area);
+  z-index: var(--markdown-z-index);
+}
+
+.output {
+  grid-area: var(--output-area);
+  padding: 1rem;
+
+  background-color: var(--con-background);
+  z-index: var(--output-z-index);
+}
+
+.content[data-fullsize="true"] {
+  --output-header-area: 1 / 1 / 2 / -1;
+  --output-area: 1 / 1 / -1 / -1;
+  --output-z-index: 40;
+  --section-divider-color: transparent;
+
+  //.output {
+  //  display: inline-block;
+  //  max-width: 70rem;
+  //  justify-content: center;
+  //}
+}
+
+//.output--fullsize {
+//  --output-header-area: 1 / 1 / 2 / -1;
+//  --output-area: 1 / 1 / -1 / -1;
+//  --output-z-index: 40;
+//}
+
+.editor-header {
+  @include mixins.typography-ff-sans-normal;
+  @include mixins.typography-fs-200;
+  @include mixins.typography-letter-spacing-1;
+  @include mixins.typography-uppercase;
+  padding-inline: 1rem;
+  padding-block: 0.75rem;
+  color: var(--con-text-secondary);
+  background-color: var(--con-section-label-background);
+
+  grid-area: var(--markdown-header-area);
+  z-index: var(--markdown-z-index);
+}
+
+.output-header {
+  @include mixins.typography-ff-sans-normal;
+  @include mixins.typography-fs-200;
+  @include mixins.typography-letter-spacing-1;
+  @include mixins.typography-uppercase;
+  padding-inline: 1rem;
+  padding-block: 0.75rem;
+  color: var(--con-text-secondary);
+  background-color: var(--con-section-label-background);
+
+  grid-area: var(--output-header-area);
+  z-index: var(--output-z-index);
+}
+
+.layout-toggle {
+  grid-area: 1 / 1 / 2 / -1;
+  justify-self: flex-end;
+  align-self: center;
+  margin-right: 1rem;
+  z-index: 999;
+}
